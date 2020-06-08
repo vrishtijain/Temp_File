@@ -27,22 +27,25 @@ def allowed_file(filename):
 
 
 @app.route('/api/enroll', methods=['GET', 'POST'])
-@cross_origin
+@cross_origin()
 def upload():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return 'file uploaded'
-    else:
-        return render_template('upload.html')
+    print("gobar")
+    print(request.data.decode())
+    # if request.method == 'POST':
+    #     if 'file' not in request.files:
+    #         flash('No file part')
+    #         return redirect(request.url)
+    #     file = request.files['file']
+    #     if file.filename == '':
+    #         flash('No selected file')
+    #         return redirect(request.url)
+    #     if file and allowed_file(file.filename):
+    #         filename = secure_filename(file.filename)
+    #         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    #         return 'file uploaded'
+    # else:
+    #     return render_template('upload.html')
+    return "gobar"
 
 
 if __name__ == "__main__":

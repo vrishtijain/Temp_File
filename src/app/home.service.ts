@@ -21,11 +21,13 @@ export class HomeService {
 
   postFile(fileToUpload: File) {
     const endpoint = this._url;
-    const formData: FormData = new FormData();
-    formData.append('fileKey', fileToUpload);
+    console.log("this is supposed to be data ")
+    console.log(fileToUpload)
+    // const formData: FormData = new FormData();
+    // formData.append('fileKey', fileToUpload);
     // formData.append('fileKey', fileToUpload, fileToUpload.name);
     return this._http
-      .post(endpoint, formData).pipe(catchError(this.errorHandler))
+      .post(endpoint, fileToUpload).pipe(catchError(this.errorHandler))
   }
   
 

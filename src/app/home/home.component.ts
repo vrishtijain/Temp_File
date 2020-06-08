@@ -32,11 +32,12 @@ export class HomeComponent implements OnInit {
       reader.readAsText(file);
       reader.onload = (e) => {
         let csv: string = reader.result as string;
-        console.log(csv);
-        this.my_file = csv;
+        // console.log(csv);
+        this.my_file =  csv;
 
         this._valid.postFile(this.my_file).subscribe(data => {
           // do something, if upload success
+          console.log("trying to upload ")
         }, error => {
           console.log(error);
         });
@@ -47,14 +48,6 @@ export class HomeComponent implements OnInit {
   }}}
 
 
-  // public changeListener(files: FileList) {
-   
-
-  //     }
-  //   }
-  // }
-
-
-
+  
 
 }
