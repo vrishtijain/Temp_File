@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public a;
+  public my_file;
   constructor(private _valid: HomeService) { }git 
 
   ngOnInit(): void {
@@ -33,7 +33,15 @@ export class HomeComponent implements OnInit {
       reader.onload = (e) => {
         let csv: string = reader.result as string;
         console.log(csv);
-        this.a = csv;
+        this.my_file = csv;
+
+        this._valid.postFile(this.my_file).subscribe(data => {
+          // do something, if upload success
+        }, error => {
+          console.log(error);
+        });
+
+
     }
 
   }}}
